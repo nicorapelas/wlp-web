@@ -1,0 +1,25 @@
+.auth-success-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #e4fee2;
+  border: 1px solid #d5feca;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  justify-content: center;
+}
+
+.auth-success-icon {
+  color: #29dc26;
+  font-size: 20px;
+  margin-left: 12px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.auth-success-content {
+  color: #21991b;
+  font-size: 14px;
+  line-height: 1.5;
+}

@@ -1,0 +1,21 @@
+.payment-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .error-message {
+    color: #ff3b30;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ff3b30;
+    border-radius: 4px;
+    background-color: rgba(255, 59, 48, 0.1);
+  }
+  
+  .payment-status {
+    margin: 10px 0;
+    font-weight: 500;
+    color: #007aff;
+  }

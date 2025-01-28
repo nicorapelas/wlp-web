@@ -1,0 +1,317 @@
+.cards-admin-container {
+    padding: 20px;
+    color: #fff;
+  }
+  
+  .cards-list-header,
+  .card-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #dee2e6;
+  }
+
+  .card-details {
+    padding: 20px;
+    color: #fff;
+  }
+  
+  .card-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(244, 214, 61, 0.2);
+  }
+  
+  .card-details-header h3 {
+    color: #f4d63d;
+    margin: 0;
+  }
+  
+  .btn {
+    background-color: transparent;
+    border: 2px solid #f4d63d;
+    color: #f4d63d;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #f4d63d;
+    color: #000;
+  }
+  
+  .btn-sm {
+    padding: 4px 8px;
+    font-size: 0.875rem;
+  }
+  
+  .status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  
+  .status-badge.created {
+    background: #e3f2fd;
+    color: #1976d2;
+  }
+  
+  .status-badge.sold {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+  
+  .status-badge.used {
+    background: #ffebee;
+    color: #c62828;
+  }
+  
+  .status-badge.expired {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #F44336;
+    border: 1px solid #F44336;
+  }
+  
+  .card-info {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(244, 214, 61, 0.2);
+  }
+  
+  .info-row {
+    display: flex;
+    margin-bottom: 12px;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    border: 1px solid rgba(244, 214, 61, 0.1);
+  }
+  
+  .info-row label {
+    flex: 0 0 140px;
+    font-weight: 600;
+    color: #f4d63d;
+  }
+  
+  .info-row span {
+    flex: 1;
+    color: #fff;
+  }
+  
+  .table {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .table th {
+    background-color: rgba(244, 214, 61, 0.1);
+    color: #f4d63d;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  
+  .table td {
+    padding: 12px;
+    border-top: 1px solid rgba(244, 214, 61, 0.1);
+    color: #fff;
+  }
+  
+  .table tbody tr:hover {
+    background-color: rgba(244, 214, 61, 0.05);
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+    min-width: 100%;
+    max-width: 100%;
+  }
+  
+  .table th,
+  .table td {
+    white-space: nowrap;
+    padding: 12px 16px;
+  }
+  
+  .table td:empty::before {
+    content: '-';
+    color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .table td:nth-child(5) {
+    font-family: monospace;
+    letter-spacing: 1px;
+  }
+  
+  .table td:nth-child(8),
+  .table td:nth-child(9),
+  .table td:nth-child(10) {
+    font-size: 0.875rem;
+  }
+  
+  /* Add subtle scrollbar styling */
+  .table-responsive::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .table-responsive::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .table-responsive::-webkit-scrollbar-thumb {
+    background-color: rgba(244, 214, 61, 0.3);
+    border-radius: 4px;
+  }
+  
+  /* Alert styling */
+  .alert-danger {
+    background-color: rgba(244, 67, 54, 0.1);
+    border: 1px solid #F44336;
+    color: #F44336;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+
+  /* Add these styles to your existing CSS */
+
+.stats-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .stat-box {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(244, 214, 61, 0.2);
+    border-radius: 8px;
+    padding: 15px 20px;
+    flex: 1;
+  }
+  
+  .stat-box label {
+    display: block;
+    color: #f4d63d;
+    font-size: 0.875rem;
+    margin-bottom: 5px;
+  }
+  
+  .stat-box span {
+    display: block;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .header-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  /* Update existing button styles */
+  .btn-primary {
+    background-color: #f4d63d;
+    color: #000;
+    border: none;
+    font-weight: 600;
+  }
+  
+  .btn-primary:hover {
+    background-color: #e5c82e;
+    color: #000;
+  }
+
+  /* Update table styles */
+  .table-responsive {
+    overflow-x: auto;
+    min-width: 100%;
+    max-width: 100%;
+  }
+  
+  
+  .table th,
+  .table td {
+    white-space: nowrap;
+    padding: 12px 16px;
+  }
+  
+  /* Set fixed widths for Batch ID and Product columns */
+  .table th:nth-child(1),
+  .table td:nth-child(1) {
+    width: 300px;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Product column at 50% width of Batch ID */
+  .table th:nth-child(2),
+  .table td:nth-child(2) {
+    width: 150px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Style for empty values */
+  .table td:empty::before {
+    content: '-';
+    color: rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Password cell */
+  .table td:nth-child(5) {
+    font-family: monospace;
+    letter-spacing: 1px;
+  }
+  
+  /* Timestamp columns */
+  .table td:nth-child(8),
+  .table td:nth-child(9),
+  .table td:nth-child(10) {
+    font-size: 0.875rem;
+  }
+  
+  /* Add tooltip for truncated text */
+  .table td:nth-child(1),
+  .table td:nth-child(2) {
+    position: relative;
+  }
+  
+  .table td:nth-child(1):hover,
+  .table td:nth-child(2):hover {
+    overflow: visible;
+  }
+  
+  .table td:nth-child(1):hover > *,
+  .table td:nth-child(2):hover > * {
+    position: absolute;
+    background-color: #000;
+    padding: 12px 16px;
+    border: 1px solid rgba(244, 214, 61, 0.2);
+    border-radius: 4px;
+    z-index: 1;
+  }
+  
+  .info-section {
+    margin-bottom: 24px;
+  }
+
+  .info-section h4 {
+    color: #f4d63d;
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }

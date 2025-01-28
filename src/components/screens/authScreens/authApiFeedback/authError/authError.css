@@ -1,0 +1,25 @@
+.auth-error-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  justify-content: center;
+}
+
+.auth-error-icon {
+  color: #dc2626;
+  font-size: 20px;
+  margin-left: 12px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.auth-error-content {
+  color: #991b1b;
+  font-size: 14px;
+  line-height: 1.5;
+}
