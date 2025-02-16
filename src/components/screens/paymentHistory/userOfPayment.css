@@ -1,0 +1,102 @@
+.user-of-payment-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 0 16px;
+}
+
+.user-of-payment-card {
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.user-of-payment-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border-color: #3b82f6;
+}
+
+.user-of-payment-card h3 {
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  font-size: 1.25rem;
+}
+
+.user-details p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0;
+  padding: 8px 0;
+  border-bottom: 1px solid #374151;
+}
+
+.user-details p:last-child {
+  border-bottom: none;
+}
+
+.label {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.value {
+  color: #ffffff;
+  font-size: 0.875rem;
+}
+
+.value.font-mono {
+  color: #f4d63d;
+  font-family: monospace;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-badge.verified {
+  background-color: #00c851;
+  color: white;
+}
+
+.status-badge.unverified {
+  background-color: #ff4444;
+  color: white;
+}
+
+@media (max-width: 640px) {
+  .user-of-payment-container {
+    padding: 0 12px;
+  }
+
+  .user-details p {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .value {
+    width: 100%;
+    word-break: break-all;
+  }
+}
+
+.user-of-payment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.user-of-payment-header h3 {
+  margin: 0;
+}

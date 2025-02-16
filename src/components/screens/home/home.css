@@ -10,6 +10,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
+  position: relative;
+  z-index: 3;
 }
 
 .logo-container {
@@ -43,7 +45,8 @@
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 48px;
 }
 
 .main-image {
@@ -65,18 +68,19 @@
   background-color: rgba(0, 0, 0, 0.671);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  padding: 50px 20px;
+  padding: 60px 20px 50px;
   text-align: center;
   z-index: 2;
+  overflow-y: auto;
 }
 
 .text-overlay h1 {
   color: white;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   font-weight: 200;
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   margin-bottom: 20px;
 }
 
@@ -84,20 +88,21 @@
   color: white;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   font-weight: 200;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.6;
 }
 
 .content-wrapper {
-  max-width: 65%;
+  max-width: min(90%, 1200px);
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .main-description {
   color: white;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   font-weight: 200;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.6;
   margin-bottom: 2rem;
 }
@@ -110,7 +115,7 @@
 .features-section h2 {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   font-weight: 300;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
   margin-bottom: 1.5rem;
 }
 
@@ -125,13 +130,28 @@
 
 .features-section strong {
   display: block;
-  font-size: 1.3rem;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
   margin-bottom: 0.5rem;
   font-weight: 300;
 }
 
 .features-section p {
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
   font-weight: 200;
   margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .content-wrapper {
+    max-width: 95%;
+    padding: 0 10px;
+  }
+
+  .text-overlay {
+    padding: 48px 10px 30px;
+  }
+
+  .features-section li {
+    margin-bottom: 1rem;
+  }
 }

@@ -111,6 +111,16 @@
   color: #ffffff;
 }
 
+.table tbody tr {
+  margin-bottom: 5px;
+  border-bottom: 5px solid transparent;
+}
+
+.table tbody tr:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
 .font-mono {
   font-family: monospace;
 }
@@ -278,4 +288,62 @@
 
 .cards-owing-details {
   margin-bottom: 8px;
+}
+
+.status-button {
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.status-button.used {
+  background-color: #ff4444;
+  color: white;
+}
+
+.status-button.unused {
+  background-color: #00c851;
+  color: white;
+}
+
+.admin-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.view-button {
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 6px;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 4px 12px;
+  transition: all 0.2s;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  width: 60px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.view-button:hover {
+  color: #ffffff;
+  background-color: #2d3748;
+  border-color: #4b5563;
+}
+
+.my-cards-header-spacer {
+  margin-bottom: 5px;
 }

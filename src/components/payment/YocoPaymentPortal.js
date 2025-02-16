@@ -32,7 +32,6 @@ const YocoPaymentPortal = () => {
 
   useEffect(() => {
     console.log(`cardToBuy:`, cardToBuy)
-    console.log(`confirmPurchase:`, confirmPurchase)
     if (confirmPurchase && cardToBuy) {
       console.log(`let's go`)
       setPaymentTriggered(true)
@@ -40,7 +39,6 @@ const YocoPaymentPortal = () => {
   }, [confirmPurchase, cardToBuy])
 
   useEffect(() => {
-    console.log(`paymentTriggered:`, paymentTriggered)
     if (paymentTriggered) {
       handleConfirmedPurchase()
     }

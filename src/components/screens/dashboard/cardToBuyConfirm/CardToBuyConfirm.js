@@ -36,7 +36,6 @@ const CardToBuyConfirm = () => {
   }
 
   const handleConfirm = () => {
-    console.log(`@ handleConfirm`)
     setConfirmPurchase(true)
     navigate('/checkout')
   }

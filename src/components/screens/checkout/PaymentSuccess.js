@@ -22,7 +22,7 @@ const PaymentSuccess = () => {
   // Handle navigation in separate effect
   useEffect(() => {
     if (countdown <= 0) {
-      navigate('/dashboard')
+      navigate('/cards-just-paid')
     }
   }, [countdown, navigate])
 

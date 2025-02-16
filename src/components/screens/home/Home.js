@@ -11,11 +11,6 @@ const Home = () => {
         <div className="logo-container">
           <img src={logo} alt="logo" />
         </div>
-        {/* <div className="nav-buttons">
-          <button className="nav-btn">Button 1</button>
-          <button className="nav-btn">Button 2</button>
-          <button className="nav-btn">Button 3</button>
-        </div> */}
       </header>
 
       <main className="main-content">

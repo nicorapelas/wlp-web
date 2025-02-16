@@ -34,19 +34,13 @@ const PayfastPaymentPortal = () => {
   }, [loading])
 
   useEffect(() => {
-    console.log('confirmPurchase changed:', confirmPurchase)
-    console.log('cardToBuy:', cardToBuy)
-
     if (confirmPurchase && cardToBuy) {
-      console.log('Setting paymentTriggered to true')
       setPaymentTriggered(true)
     }
   }, [confirmPurchase, cardToBuy])
 
   useEffect(() => {
-    console.log('paymentTriggered changed:', paymentTriggered)
     if (paymentTriggered) {
-      console.log('Calling handleConfirmedPurchase')
       handleConfirmedPurchase()
     }
   }, [paymentTriggered])
@@ -63,8 +57,6 @@ const PayfastPaymentPortal = () => {
   }
 
   const handlePayment = async (productCode, price) => {
-    console.log('Starting payment with:', { productCode, price })
-
     try {
       setLoading(true)
       setError(null)
@@ -75,8 +67,6 @@ const PayfastPaymentPortal = () => {
         productCode: productCode,
         description: `Purchase of ${productCode}`,
       })
-      console.log('Payment response:', response)
-
       if (response?.paymentData && response?.redirectUrl) {
         const form = formRef.current
         if (!form) {
@@ -84,7 +74,6 @@ const PayfastPaymentPortal = () => {
           return
         }
 
-        console.log('Creating form with action:', response.redirectUrl)
         form.innerHTML = ''
         form.method = 'POST'
         form.enctype = 'application/x-www-form-urlencoded'
@@ -96,16 +85,10 @@ const PayfastPaymentPortal = () => {
           input.name = key
           input.value = String(value)
           form.appendChild(input)
-          console.log(`Added form field: ${key} = ${value}`)
         })
 
         form.action = response.redirectUrl
-        console.log('Form ready for submission:', {
-          action: form.action,
-          fields: Object.fromEntries(new FormData(form)),
-        })
 
-        console.log('Submitting form to Payfast...')
         form.submit()
       } else {
         console.error('Invalid response:', response)

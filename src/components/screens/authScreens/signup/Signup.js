@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
+import NetworkChecker from '../../../common/NetworkChecker'
 import logo from '../../../../assets/images/logo/logo-512.png'
 import AuthError from '../authApiFeedback/authError/AuthError'
 import { Context as AuthContext } from '../../../../context/AuthContext'
@@ -93,7 +94,12 @@ const Signup = () => {
     )
   }
 
-  return renderContent()
+  return (
+    <>
+      <NetworkChecker />
+      {renderContent()}
+    </>
+  )
 }
 
 export default Signup

@@ -4,6 +4,7 @@ import logo from '../../../../assets/images/logo/logo-512.png'
 import LoaderFullScreen from '../../../common/loaders/fullScreenLoader/LoaderFullScreen'
 import AuthError from '../authApiFeedback/authError/AuthError'
 import AuthSuccess from '../authApiFeedback/authSuccess/AuthSuccess'
+import NetworkChecker from '../../../common/NetworkChecker'
 import { Context as AuthContext } from '../../../../context/AuthContext'
 import './login.css'
 
@@ -14,7 +15,7 @@ const Login = () => {
   })
 
   const {
-    state: { loading, apiMessage, errorMessage },
+    state: { loading, apiMessage, errorMessage, networkError },
     login,
     clearErrorMessage,
     clearApiMessage,
@@ -86,7 +87,13 @@ const Login = () => {
     )
   }
 
-  return renderContent()
+  return (
+    <>
+      <div className="version-number">v1.0.1</div>
+      <NetworkChecker />
+      {renderContent()}
+    </>
+  )
 }
 
 export default Login

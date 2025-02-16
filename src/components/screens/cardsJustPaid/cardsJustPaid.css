@@ -1,0 +1,188 @@
+.cards-paid-container {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cards-paid-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.cards-paid-header h2 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.cards-paid-header p {
+  color: #9ca3af;
+  font-size: 1rem;
+}
+
+.card-section {
+  width: fit-content;
+  min-width: 600px;
+  margin-bottom: 32px;
+  background-color: #1f2937;
+  border-radius: 8px;
+  border: 1px solid #374151;
+  padding: 20px 40px;
+}
+
+.card-main-info {
+  text-align: center;
+}
+
+.status-info {
+  margin-bottom: 16px;
+}
+
+.product-info,
+.card-number-info,
+.password-info,
+.batch-info,
+.purchase-info {
+  margin-bottom: 12px;
+  padding: 8px;
+  background-color: #111827;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.product-info:hover,
+.card-number-info:hover,
+.password-info:hover,
+.batch-info:hover,
+.purchase-info:hover {
+  background-color: #1a2234;
+}
+
+.label {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  margin-right: 8px;
+  display: inline-block;
+}
+
+.value {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.font-mono {
+  font-family: monospace;
+  color: #f4d63d;
+}
+
+.cards-paid-actions {
+  margin-bottom: 32px;
+  text-align: left;
+  width: 100%;
+}
+
+.card-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.action-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.action-button:hover {
+  background-color: #e0e0e0;
+}
+
+.button-icon {
+  font-size: 1rem;
+}
+
+@media (max-width: 640px) {
+  .cards-paid-container {
+    padding: 16px;
+  }
+
+  .cards-paid-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .cards-paid-header p {
+    font-size: 0.875rem;
+  }
+
+  .card-section {
+    min-width: auto;
+    padding: 16px;
+    margin-right: 30px;
+  }
+
+  .card-main-info {
+    padding: 8px;
+  }
+
+  .product-info,
+  .card-number-info,
+  .password-info,
+  .batch-info,
+  .purchase-info {
+    padding: 12px 8px;
+    text-align: left;
+    word-break: break-all;
+  }
+
+  .label {
+    display: block;
+    margin-bottom: 4px;
+    margin-right: 0;
+    font-size: 0.75rem;
+  }
+
+  .value {
+    font-size: 0.875rem;
+  }
+
+  .card-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .action-button {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Add new breakpoint for very small devices */
+@media (max-width: 360px) {
+  .cards-paid-container {
+    padding: 12px;
+  }
+
+  .cards-paid-header h2 {
+    font-size: 1.125rem;
+  }
+
+  .value {
+    font-size: 0.75rem;
+  }
+}

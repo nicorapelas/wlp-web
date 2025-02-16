@@ -5,6 +5,8 @@ const authReducer = (state, action) => {
   switch (action.type) {
     case 'LOADING':
       return { ...state, loading: true }
+    case 'NETWORK_ERROR':
+      return { ...state, networkError: action.payload }
     case 'CLOSE_FORM_MODAL':
       return { ...state, closeFormModal: true }
     case 'CLOSE_FORM_MODAL_RESET':
@@ -50,6 +52,10 @@ const authReducer = (state, action) => {
   }
 }
 
+const setNetworkError = (dispatch) => (value) => {
+  dispatch({ type: 'NETWORK_ERROR', payload: value })
+}
+
 const fetchUser = (dispatch) => async () => {
   dispatch({ type: 'LOADING' })
   try {
@@ -62,7 +68,7 @@ const fetchUser = (dispatch) => async () => {
       return
     }
   } catch (error) {
-    await ngrokApi.post('/error', { error: error })
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
     return
   }
 }
@@ -102,7 +108,7 @@ const register =
       if (response.data.success)
         dispatch({ type: 'ADD_API_MESSAGE', payload: response.data })
     } catch (err) {
-      await ngrokApi.post('/error', { error: err })
+      dispatch({ type: 'NETWORK_ERROR', payload: true })
     }
   }
 
@@ -118,7 +124,7 @@ const resendVerificationEmail =
       dispatch({ type: 'ADD_API_MESSAGE', payload: response.data })
       return
     } catch (err) {
-      await ngrokApi.post('/error', { error: err })
+      dispatch({ type: 'NETWORK_ERROR', payload: true })
     }
   }
 
@@ -141,7 +147,7 @@ const login =
         dispatch({ type: 'SIGN_IN', payload: response.data.token })
       }
     } catch (err) {
-      await ngrokApi.post('/error', { error: err })
+      dispatch({ type: 'NETWORK_ERROR', payload: true })
       return
     }
   }
@@ -165,7 +171,7 @@ const forgotPassword =
         dispatch({ type: 'ADD_API_MESSAGE', payload: response.data })
       }
     } catch (error) {
-      await ngrokApi.post('/error', { error: error })
+      dispatch({ type: 'NETWORK_ERROR', payload: true })
     }
   }
 
@@ -179,7 +185,7 @@ const acceptTermsAndConditions = (dispatch) => async (value) => {
     dispatch({ type: 'FETCH_USER', payload: response.data })
     return
   } catch (error) {
-    await ngrokApi.post('/error', { error: error })
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
     return
   }
 }
@@ -198,7 +204,7 @@ const createDeviceInfo = (dispatch) => async (data) => {
     dispatch({ type: 'CREATE_USERS_DEVICE', payload: response.data })
     return
   } catch (error) {
-    await ngrokApi.post('/error', { error: error })
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
     return
   }
 }
@@ -208,7 +214,7 @@ const increaseUserVisitCount = (dispatch) => async () => {
     await ngrokApi.patch('/auth/user/visit-count')
     return
   } catch (error) {
-    await ngrokApi.post('/error', { error: error })
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
     return
   }
 }
@@ -230,7 +236,7 @@ const createAffiliate = (dispatch) => async (email) => {
     }
     return
   } catch (error) {
-    await ngrokApi.post('/error', { error: error })
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
     return
   }
 }
@@ -250,7 +256,7 @@ const fetchAffiliateInfo = (dispatch) => async (email) => {
     dispatch({ type: 'ADD_AFFILIATE_INFO', payload: response.data })
     return
   } catch (error) {
-    await ngrokApi.post('/error', { error: error })
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
     return
   }
 }
@@ -268,7 +274,7 @@ const fetchAllAffiliates = (dispatch) => async () => {
     }
     dispatch({ type: 'ADD_AFFILIATES', payload: response.data })
   } catch (error) {
-    await ngrokApi.post('/error', { error: error })
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
     return
   }
 }
@@ -282,7 +288,7 @@ const applyToIntro = (dispatch) => async () => {
     await ngrokApi.patch('/auth/user/apply-to-intro')
     return
   } catch (error) {
-    await ngrokApi.post('/error', { error: error })
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
     return
   }
 }
@@ -294,7 +300,7 @@ const deleteAccount = (dispatch) => async () => {
     dispatch({ type: 'ADD_API_MESSAGE', payload: response.data })
     return
   } catch (error) {
-    await ngrokApi.post('/error', { error: error })
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
     return
   }
 }
@@ -310,7 +316,7 @@ const fetchUsersInfoContent = (dispatch) => async () => {
     dispatch({ type: 'ADD_USERS_INFO_CONTENT', payload: response.data })
     return
   } catch (error) {
-    await ngrokApi.post('/error', { error: error })
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
     return
   }
 }
@@ -327,7 +333,7 @@ const updateUsersInfo = (dispatch) => async (data) => {
     dispatch({ type: 'CLOSE_FORM_MODAL' })
     return
   } catch (error) {
-    await ngrokApi.post('/error', { error: error })
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
     return
   }
 }
@@ -339,6 +345,7 @@ const closeFormModalReset = (dispatch) => () => {
 export const { Provider, Context } = createDataContext(
   authReducer,
   {
+    setNetworkError,
     register,
     resendVerificationEmail,
     login,
@@ -368,6 +375,7 @@ export const { Provider, Context } = createDataContext(
   {
     token: null,
     user: null,
+    networkError: false,
     errorMessage: null,
     apiMessage: null,
     loading: false,

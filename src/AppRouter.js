@@ -20,6 +20,9 @@ import MyCards from './components/screens/myCards/MyCards'
 import PaymentHistory from './components/screens/paymentHistory/PaymentHistory'
 import AdminPanel from './components/screens/adminPanel/AdminPanel'
 import Home from './components/screens/home/Home'
+import NetworkError from './components/common/netoworkError/NetworkError'
+import CardsJustPaid from './components/screens/cardsJustPaid/CardsJustPaid'
+import MyCardView from './components/screens/myCards/myCardView/MyCardView'
 import { Context as AuthContext } from './context/AuthContext'
 
 const AppRouter = () => {
@@ -60,24 +63,62 @@ const AppRouter = () => {
             {/* Protected Routes */}
             <Route
               path="/dashboard"
+              element={token ? <Dashboard /> : <Navigate to="/login" replace />}
+            />
+            <Route
+              path="/checkout"
               element={
-                token ? (
-                  <Dashboard />
-                ) : (
-                  <>
-                    <Navigate to="/login" replace />
-                  </>
-                )
+                token ? <CheckoutPage /> : <Navigate to="/login" replace />
               }
             />
-            <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/payment-success" element={<PaymentSuccess />} />
-            <Route path="/payment-cancelled" element={<PaymentCancelled />} />
-            <Route path="/my-cards" element={<MyCards />} />
+            <Route
+              path="/payment-success"
+              element={
+                token ? <PaymentSuccess /> : <Navigate to="/login" replace />
+              }
+            />
+            <Route
+              path="/payment-cancelled"
+              element={
+                token ? <PaymentCancelled /> : <Navigate to="/login" replace />
+              }
+            />
+            <Route
+              path="/cards-just-paid"
+              element={
+                token ? <CardsJustPaid /> : <Navigate to="/login" replace />
+              }
+            />
+            <Route
+              path="/my-cards"
+              element={token ? <MyCards /> : <Navigate to="/login" replace />}
+            />
+            <Route
+              path="/my-card-view"
+              element={
+                token ? <MyCardView /> : <Navigate to="/login" replace />
+              }
+            />
+            <Route path="/network-error" element={<NetworkError />} />
             {/* Admin Routes */}
-            <Route path="/cards-admin" element={<CardsAdmin />} />
-            <Route path="/payment-history" element={<PaymentHistory />} />
-            <Route path="/admin-panel" element={<AdminPanel />} />
+            <Route
+              path="/cards-admin"
+              element={
+                token ? <CardsAdmin /> : <Navigate to="/login" replace />
+              }
+            />
+            <Route
+              path="/payment-history"
+              element={
+                token ? <PaymentHistory /> : <Navigate to="/login" replace />
+              }
+            />
+            <Route
+              path="/admin-panel"
+              element={
+                token ? <AdminPanel /> : <Navigate to="/login" replace />
+              }
+            />
             {/* Auth Routes */}
             <Route
               path="/login"

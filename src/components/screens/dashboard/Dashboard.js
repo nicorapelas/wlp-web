@@ -1,7 +1,9 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 import { Context as AuthContext } from '../../../context/AuthContext'
 import { Context as CardsContext } from '../../../context/CardsContext'
+import NetworkChecker from '../../common/NetworkChecker'
 import WP001 from '../../common/products/WP001'
 import WP002 from '../../common/products/WP002'
 import WP003 from '../../common/products/WP003'
@@ -10,6 +12,7 @@ import './dashboard.css'
 
 const Dashboard = () => {
   const { signout, setIsAuthChecked } = useContext(AuthContext)
+
   const {
     state: { cardToBuy },
   } = useContext(CardsContext)
@@ -21,8 +24,8 @@ const Dashboard = () => {
   }
 
   const handleSignout = () => {
-    signout()
     setIsAuthChecked(false)
+    signout()
   }
 
   const renderContent = () => {
@@ -48,7 +51,12 @@ const Dashboard = () => {
     )
   }
 
-  return renderContent()
+  return (
+    <>
+      <NetworkChecker />
+      {renderContent()}
+    </>
+  )
 }
 
 export default Dashboard

@@ -17,8 +17,6 @@ const CardDetails = ({ card, onBack }) => {
     fetchPaymentHistory,
   } = useContext(YocoContext)
 
-  console.log(paymentHistory)
-
   useEffect(() => {
     if (card.purchasedBy) {
       fetchCardOwner(card.purchasedBy)

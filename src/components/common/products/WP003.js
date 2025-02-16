@@ -46,10 +46,18 @@ const WP003 = () => {
     if (!cardToBuy) {
       return productDetails.map((detail, index) => (
         <div key={index} className="detail-row">
-          <span className={detail.label === 'Price' ? 'label-bold' : 'label'}>
+          <span
+            className={
+              detail.label === 'Price' ? 'detail-label-bold' : 'detail-label'
+            }
+          >
             {detail.label}
           </span>
-          <span className={detail.label === 'Price' ? 'value-bold' : 'value'}>
+          <span
+            className={
+              detail.label === 'Price' ? 'detail-value-bold' : 'detail-value'
+            }
+          >
             {detail.value}
           </span>
         </div>

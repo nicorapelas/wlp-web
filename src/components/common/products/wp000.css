@@ -1,155 +1,155 @@
 .product-card {
-    display: flex;
-    flex-direction: column;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    width: 100%;
-    font-size: 12px;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 100%;
+  font-size: 12px;
+  overflow: hidden;
+}
+
+.product-image {
+  padding: 10px;
+  background: #f7c926;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.product-image img {
+  width: 100%;
+  height: auto;
+}
+
+.product-details {
+  width: 100%;
+  padding: 0 5px;
+}
+
+.detail-row {
+  display: flex;
+  margin-bottom: 8px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.detail-label {
+  flex: 0 0 45%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detail-label-bold {
+  flex: 0 0 45%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+}
+
+.detail-value {
+  flex: 0 0 55%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+}
+
+.detail-value-bold {
+  flex: 0 0 55%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+  font-weight: bold;
+}
+
+.coupon-button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  background-color: #51ff00;
+  border: none;
+  border-radius: 6px;
+  color: #000;
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.coupon-button:hover {
+  background-color: #ffed4a;
+}
+
+.coupon-button:active {
+  transform: scale(0.98);
+}
+
+.detail-row-confirm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.detail-row-confirm div {
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  padding: 4px;
+}
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+  .product-card {
+    flex-direction: row;
   }
-  
+
   .product-image {
-    padding: 10px;
-    background: #f7c926;
-    border-radius: 8px;
-    display: flex;
+    flex: 0 0 40%;
+    margin-bottom: 0;
+  }
+
+  .product-details {
+    flex: 1;
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
   }
-  
-  .product-image img {
-    width: 100%;
-    height: auto;
+
+  .product-image {
+    width: calc(100% - 40px);
+    margin: 0 20px 10px 20px;
   }
-  
+
   .product-details {
     width: 100%;
-    padding: 0 5px;
+    padding: 0 15px;
   }
-  
+
   .detail-row {
-    display: flex;
-    margin-bottom: 8px;
-    gap: 8px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card {
     width: 100%;
   }
-  
-  .label {
-    flex: 0 0 45%;
-    white-space: nowrap;
-  }
-
-  .label-bold {
-    flex: 0 0 45%;
-    white-space: nowrap;
-    font-weight: bold;
-  }
-  
-  .value {
-    flex: 0 0 55%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .value-bold {
-    flex: 0 0 55%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-weight: bold;
-  }
-  
-  .coupon-button {
-    width: 100%;
-    padding: 8px;
-    margin-top: 10px;
-    background-color: #51ff00;
-    border: none;
-    border-radius: 6px;
-    color: #000;
-    font-weight: bold;
-    font-size: 12px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .coupon-button:hover {
-    background-color: #ffed4a;
-  }
-  
-  .coupon-button:active {
-    transform: scale(0.98);
-  }
-
-  .detail-row-confirm {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 6px;
-    margin-bottom: 8px;
-  }
-
-  .detail-row-confirm div {
-    font-size: 12px;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-    padding: 4px;
-  }
-  
-
-  /* Media query for larger screens */
-  @media (min-width: 768px) {
-    .product-card {
-      flex-direction: row;
-    }
-  
-    .product-image {
-      flex: 0 0 40%;
-      margin-bottom: 0;
-    }
-  
-    .product-details {
-      flex: 1;
-      padding-left: 10px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .product-card {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .product-image {
-      width: calc(100% - 40px);
-      margin: 0 20px 10px 20px;
-    }
-
-    .product-details {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .detail-row {
-      justify-content: center;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .product-card {
-      width: 100%;
-    }
-  }
-  
-  
+}

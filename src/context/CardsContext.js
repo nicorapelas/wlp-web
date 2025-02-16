@@ -6,6 +6,8 @@ const CardsReducer = (state, action) => {
   switch (action.type) {
     case 'LOADING':
       return { ...state, loading: true, error: null }
+    case 'NETWORK_ERROR':
+      return { ...state, networkError: true, loading: false }
     case 'ADD_ERROR':
       return { ...state, error: action.payload, loading: false }
     case 'FETCH_CARDS':
@@ -22,13 +24,15 @@ const CardsReducer = (state, action) => {
     case 'SET_CARD_TO_BUY':
       return { ...state, cardToBuy: action.payload }
     case 'FETCH_CARD_OWNER':
-      return { ...state, cardOwner: action.payload }
+      return { ...state, cardOwner: action.payload, loading: false }
     case 'FETCH_USER_CARDS':
       return { ...state, userCards: action.payload, loading: false }
     case 'FETCH_CARDS_OWING':
       return { ...state, cardsOwing: action.payload, loading: false }
     case 'SET_CARDS_OWING':
       return { ...state, cardsOwing: action.payload, loading: false }
+    case 'SET_MY_CARD_TO_VIEW':
+      return { ...state, myCardToView: action.payload, loading: false }
     default:
       return state
   }
@@ -84,32 +88,51 @@ const setCardToBuy = (dispatch) => async (data) => {
 
 const fetchUsersCards = (dispatch) => async () => {
   dispatch({ type: 'LOADING' })
-  const response = await ngrokApi.get('/cards/fetch-user-cards')
-  console.log(response.data)
-  dispatch({ type: 'FETCH_USER_CARDS', payload: response.data })
+  try {
+    const response = await ngrokApi.get('/cards/fetch-user-cards')
+    dispatch({ type: 'FETCH_USER_CARDS', payload: response.data })
+  } catch (error) {
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
+  }
 }
 
 // Admin Action
 const fetchCardOwner = (dispatch) => async (ownerId) => {
-  const response = await ngrokApi.post('/cards/fetch-card-owner', { ownerId })
-  dispatch({ type: 'FETCH_CARD_OWNER', payload: response.data })
+  dispatch({ type: 'LOADING' })
+  try {
+    const response = await ngrokApi.post('/cards/fetch-card-owner', { ownerId })
+    dispatch({ type: 'FETCH_CARD_OWNER', payload: response.data })
+  } catch (error) {
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
+  }
 }
 
 const fetchCardsOwing = (dispatch) => async () => {
   dispatch({ type: 'LOADING' })
-  const response = await ngrokApi.get('/cards/fetch-cards-owing')
-  dispatch({ type: 'FETCH_CARDS_OWING', payload: response.data })
+  try {
+    const response = await ngrokApi.get('/cards/fetch-cards-owing')
+    dispatch({ type: 'FETCH_CARDS_OWING', payload: response.data })
+  } catch (error) {
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
+  }
 }
 
 const settleCardsOwing = (dispatch) => async (cardOwed) => {
-  console.log(`at action`)
   dispatch({ type: 'LOADING' })
-  const response = await ngrokApi.post('/cards/settle-cards-owing', cardOwed)
-  if (response.data.error) {
-    dispatch({ type: 'ADD_ERROR', payload: response.data.error })
-    return
+  try {
+    const response = await ngrokApi.post('/cards/settle-cards-owing', cardOwed)
+    if (response.data.error) {
+      dispatch({ type: 'ADD_ERROR', payload: response.data.error })
+      return
+    }
+    dispatch({ type: 'SET_CARDS_OWING', payload: response.data })
+  } catch (error) {
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
   }
-  dispatch({ type: 'SET_CARDS_OWING', payload: response.data })
+}
+
+const setMyCardToView = (dispatch) => async (cardId) => {
+  dispatch({ type: 'SET_MY_CARD_TO_VIEW', payload: cardId })
 }
 
 export const { Provider, Context } = createDataContext(
@@ -123,6 +146,7 @@ export const { Provider, Context } = createDataContext(
     fetchUsersCards,
     fetchCardsOwing,
     settleCardsOwing,
+    setMyCardToView,
   },
   {
     cards: [],
@@ -133,5 +157,7 @@ export const { Provider, Context } = createDataContext(
     cardOwner: null,
     userCards: [],
     cardsOwing: [],
+    networkError: false,
+    myCardToView: null,
   },
 )

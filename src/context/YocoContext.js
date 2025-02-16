@@ -3,6 +3,8 @@ import ngrokApi from '../api/ngrok'
 
 const yocoReducer = (state, action) => {
   switch (action.type) {
+    case 'NETWORK_ERROR':
+      return { ...state, networkError: action.payload }
     case 'SET_LOADING':
       return { ...state, loading: true }
     case 'CLEAR_LOADING':
@@ -49,11 +51,7 @@ const initiatePayment = (dispatch) => async (paymentData) => {
     })
     return response.data
   } catch (error) {
-    dispatch({
-      type: 'SET_ERROR',
-      payload: error.response?.data?.message || 'Payment initiation failed',
-    })
-    throw error
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
   }
 }
 
@@ -70,25 +68,37 @@ const setConfirmPurchase = (dispatch) => (value) => {
 }
 
 const fetchPaymentHistory = (dispatch) => async (ownerId) => {
-  const response = await ngrokApi.post('/payment/fetch-purchase-history', {
-    ownerId,
-  })
-  dispatch({ type: 'SET_PAYMENT_HISTORY', payload: response.data })
+  try {
+    const response = await ngrokApi.post('/payment/fetch-purchase-history', {
+      ownerId,
+    })
+    dispatch({ type: 'SET_PAYMENT_HISTORY', payload: response.data })
+  } catch (error) {
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
+  }
 }
 
 // Admin actoins
 const fetchAllPaymentHistory = (dispatch) => async () => {
   dispatch({ type: 'SET_LOADING' })
-  const response = await ngrokApi.get('/payment/fetch-all-payments')
-  dispatch({ type: 'SET_ALL_PAYMENT_HISTORY', payload: response.data })
+  try {
+    const response = await ngrokApi.get('/payment/fetch-all-payments')
+    dispatch({ type: 'SET_ALL_PAYMENT_HISTORY', payload: response.data })
+  } catch (error) {
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
+  }
 }
 
 const fetchUserOfPayment = (dispatch) => async (userId) => {
   dispatch({ type: 'SET_LOADING' })
-  const response = await ngrokApi.post('/payment/fetch-user-of-payment', {
-    userId,
-  })
-  dispatch({ type: 'SET_USER_OF_PAYMENT', payload: response.data })
+  try {
+    const response = await ngrokApi.post('/payment/fetch-user-of-payment', {
+      userId,
+    })
+    dispatch({ type: 'SET_USER_OF_PAYMENT', payload: response.data })
+  } catch (error) {
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
+  }
 }
 
 const setUserOfPaymentProps = (dispatch) => (props) => {
@@ -110,6 +120,7 @@ export const { Context, Provider } = createDataContext(
     setUserOfPaymentProps,
   },
   {
+    networkError: false,
     loading: false,
     errorMessage: null,
     paymentData: null,

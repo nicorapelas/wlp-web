@@ -4,6 +4,8 @@ import createDataContext from './createDataContext'
 // Reducer
 const CommonReducer = (state, action) => {
   switch (action.type) {
+    case 'NETWORK_ERROR':
+      return { ...state, networkError: action.payload }
     case 'SET_FORM_MODAL_SHOW':
       return { ...state, formModalShow: action.payload }
     case 'SET_FORM_SELECTED':
@@ -42,7 +44,7 @@ const fetchCV_ToView = (dispatch) => async (id) => {
     })
     return
   } catch (error) {
-    console.log(error)
+    dispatch({ type: 'NETWORK_ERROR', payload: true })
     return
   }
 }
@@ -70,5 +72,6 @@ export const { Provider, Context } = createDataContext(
     curriculumVitae: null,
     mediaSelected: null,
     mediaModalShow: false,
+    networkError: false,
   },
 )
